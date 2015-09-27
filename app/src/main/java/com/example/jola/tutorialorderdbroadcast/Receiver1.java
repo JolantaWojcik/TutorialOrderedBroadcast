@@ -15,7 +15,12 @@ public class Receiver1 extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i(TAG, "Intent received by Receiver1");
+        //public final String getResultData()
+       // Retrieve the current result data, as set by the previous receiver.
         String msg = getResultData() == null ? " " : getResultData();
+        //public final void	setResultData(String data)
+        //This method does not work with non-ordered broadcasts such as those sent with Context.sendBroadcast
+        //Change the current result data of this broadcast; only works with broadcasts sent through Context.sendOrderedBroadcast.
         setResultData( msg + "Receiver1");
     }
 }

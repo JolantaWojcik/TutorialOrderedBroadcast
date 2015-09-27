@@ -12,10 +12,13 @@ public class Receiver3 extends BroadcastReceiver{
 
     private final String TAG = "Receiver3";
 
+    //static manifest security:
+    //To prevent others from sending to it, make it unavailable to them with android:exported="false".
+
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i(TAG, "Intent received by Receiver3");
         String msg = getResultData() == null ? " " : getResultData();
-        setResultData( msg + "Receiver3");
+        setResultData( msg + "Receiver3 ");
     }
 }

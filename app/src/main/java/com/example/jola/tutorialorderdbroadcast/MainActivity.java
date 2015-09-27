@@ -23,11 +23,18 @@ public class MainActivity extends AppCompatActivity {
 
         IntentFilter intentFilter = new IntentFilter(CUSTOM_INTENT);
         intentFilter.setPriority(3);
+        //dynamically register
         registerReceiver(receiver1, intentFilter);
     }
 
     public void sendBroadcas(View view) {
+        //broadcasting an Intent is a background operation that the user is not normally aware of
+        //normally any other application can receive these broadcasts.
+        //here:
+        //sendOrderedBroadcast(Intent, String, BroadcastReceiver, android.os.Handler, int, String, Bundle).
         sendOrderedBroadcast(new Intent(CUSTOM_INTENT), null, new BroadcastReceiver() {
+            //A BroadcastReceiver object is only valid for the duration of the call to onReceive(Context, Intent).
+            //This method is called when the BroadcastReceiver is receiving an Intent broadcast.
             @Override
             public void onReceive(Context context, Intent intent) {
                 Toast.makeText(context, "Wynik to " + getResultData(), Toast.LENGTH_LONG).show();
